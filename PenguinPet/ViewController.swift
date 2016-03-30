@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRecorder()
+        registerNotifications()
     }
     
     //hide Status bar (Battery Bar)
@@ -166,11 +167,101 @@ extension ViewController: AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         stopPlayback()
     }
-    // MARK: Notifications
+    
     
     // MARK: - Helpers
+}
+// MARK: Handle Interruptions & RouteChanges (Devices un/plugged) with Notifications
+extension ViewController{
+    
+    /*
+     use the NSNotificationCenter & register to 2 events:
+     1) Audio Interruptions - other devices are playing, call entered etc
+     2) Audio Route(device) Changed - headPhones un/plugged etc
+     */
+    func registerNotifications(){
+        let session = AVAudioSession.sharedInstance()
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        
+        notificationCenter.addObserver(self, selector: #selector(self.handleInterruption(_:)), name: AVAudioSessionInterruptionNotification, object: session)
+        
+        notificationCenter.addObserver(self, selector: #selector(handleRouteChange(_:)), name: AVAudioSessionRouteChangeNotification, object: session)
+    }
     
     
+    func handleInterruption(notification: NSNotification){
+        let info = notification.userInfo!
+        
+        let interruptionTypeRawValue = info[AVAudioSessionInterruptionTypeKey] as! UInt
+        let interruptionType = AVAudioSessionInterruptionType(rawValue: interruptionTypeRawValue)!
+        
+        switch interruptionType {
+        case .Began:
+            //what we actually need is a pause method
+            //so that we can come back from this interruption
+            stopRecording()
+            stopPlayback()
+        case .Ended:
+            //interruption just ended - test the interruptionOptions
+            //to see if we should resume playback. if it's a game we should always resume playback.
+            let interruptionOptionsRawValue = info[AVAudioSessionInterruptionOptionKey] as! UInt
+            let interruptionOptions = AVAudioSessionInterruptionOptions(rawValue: interruptionOptionsRawValue)
+            
+            if interruptionOptions == .ShouldResume {
+                /*
+                 we need to save some state to detrmine
+                 resume playback or resume recording.
+                 maybe we can dialog the user...
+                 */
+            }
+        }
+        
+    }
+    /*
+     test the notification for the RouteChangeReason
+     if the reason is .OldDeviceUnavailable
+     we want to know if the old device was headphones:
+     if so, the headphones were unplugged -> stop recording & stop playback
+     */
+    func handleRouteChange(notification: NSNotification){
+        let info = notification.userInfo!
+        
+        let reasonRawValue = info[AVAudioSessionRouteChangeReasonKey] as! UInt
+        let reason = AVAudioSessionRouteChangeReason(rawValue: reasonRawValue)!
+        
+        //if an old device is unavailable we want to know which device was the previous. if
+        //it's the headphones: we would like to stop recording and playing:
+        guard reason == AVAudioSessionRouteChangeReason.OldDeviceUnavailable else {return}
+        
+        let prevRoute = info[AVAudioSessionRouteChangePreviousRouteKey] as! AVAudioSessionRouteDescription
+        
+        if prevRoute.outputs[0].portType == AVAudioSessionPortHeadphones {
+            stopPlayback()
+            stopRecording()
+        }
+    }
+    /*
+     
+     //there is a reason (AVAudioSessionRouteChangeReason)
+     //the reason can be:
+     
+     AVAudioSessionRouteChangeReason.CategoryChange
+     //The category of the session object changed. Also used when the session is first activated.
+     
+     AVAudioSessionRouteChangeReason.NewDeviceAvailable
+     //A user action (such as plugging in a headset) has made a preferred audio route available.
+     
+     AVAudioSessionRouteChangeReason.NoSuitableRouteForCategory
+     //The route changed because no suitable route is now available for the specified category.
+     
+     AVAudioSessionRouteChangeReason.OldDeviceUnavailable
+     //The previous audio output path is no longer available.
+     
+     AVAudioSessionRouteChangeReason.RouteConfigurationChange
+     //The set of input and output ports has not changed, but their configuration has—for example, a port’s selected data source has changed.
+     AVAudioSessionRouteChangeReason.WakeFromSleep
+     //The route changed when the device woke up from sleep.
+     */
 }
 
 
