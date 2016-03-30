@@ -12,7 +12,15 @@ import AVFoundation
 class ViewController: UIViewController {
     
     //MARK: State Variables
-    var audioStatus = AudioStatus.Stopped
+    var audioStatus = AudioStatus.Stopped{
+        //State Machine with swift enums and property observers
+        didSet{
+            if oldValue == .Playing && audioStatus == .Stopped {
+                //changed state from playing to stopped:)
+            }
+        }
+    }
+    
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     var currentFileUrl:NSURL?
@@ -105,8 +113,7 @@ extension ViewController: AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         let recordSettings:[String:AnyObject] = [AVFormatIDKey : Int(kAudioFormatLinearPCM),
                                                  AVSampleRateKey: 44100.0,
                                                  AVNumberOfChannelsKey: 2,
-                                                 AVEncoderAudioQualityKey: AVAudioQuality.High.rawValue
-        ]
+                                                 AVEncoderAudioQualityKey: AVAudioQuality.High.rawValue]
         
         do{
             try audioRecorder = AVAudioRecorder(URL: currentFileUrl!, settings: recordSettings)

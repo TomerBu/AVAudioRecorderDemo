@@ -117,16 +117,107 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602.5" y="438.5"/>
+            <point key="canvasLocation" x="590.5" y="449.5"/>
+        </scene>
+        <!--Card View Controller-->
+        <scene sceneID="Zdg-1U-y66">
+            <objects>
+                <viewController id="VxJ-TS-CZD" customClass="CardViewController" customModule="PenguinPet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s8f-iO-4tj"/>
+                        <viewControllerLayoutGuide type="bottom" id="tp2-z6-uih"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h7r-tv-WYx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGb-rA-ScJ">
+                                <rect key="frame" x="8" y="28" width="175.5" height="205"/>
+                                <state key="normal" backgroundImage="back"/>
+                                <state key="highlighted" backgroundImage="front"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2b-m3-GBo">
+                                <rect key="frame" x="191.5" y="28" width="175.5" height="205"/>
+                                <state key="normal" backgroundImage="back"/>
+                                <state key="highlighted" backgroundImage="front"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ng0-7b-f02">
+                                <rect key="frame" x="191.5" y="241" width="175.5" height="205"/>
+                                <state key="normal" backgroundImage="back"/>
+                                <state key="highlighted" backgroundImage="front"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goA-2t-9RM">
+                                <rect key="frame" x="8" y="454" width="175.5" height="205"/>
+                                <state key="normal" backgroundImage="back"/>
+                                <state key="highlighted" backgroundImage="front"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pO2-h0-FnU">
+                                <rect key="frame" x="191.5" y="454" width="175.5" height="205"/>
+                                <state key="normal" backgroundImage="back"/>
+                                <state key="highlighted" backgroundImage="front"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfJ-dN-ehx">
+                                <rect key="frame" x="8" y="241" width="175.5" height="205"/>
+                                <state key="normal" backgroundImage="ace_of_clubs"/>
+                                <state key="highlighted" backgroundImage="front"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IfJ-dN-ehx" firstAttribute="height" secondItem="oGb-rA-ScJ" secondAttribute="height" id="2RG-Ks-W8a"/>
+                            <constraint firstItem="pO2-h0-FnU" firstAttribute="height" secondItem="oGb-rA-ScJ" secondAttribute="height" id="3us-43-sI4"/>
+                            <constraint firstItem="goA-2t-9RM" firstAttribute="height" secondItem="oGb-rA-ScJ" secondAttribute="height" id="63a-Jd-W0r"/>
+                            <constraint firstItem="goA-2t-9RM" firstAttribute="width" secondItem="oGb-rA-ScJ" secondAttribute="width" id="8zz-W1-jzp"/>
+                            <constraint firstItem="oGb-rA-ScJ" firstAttribute="top" secondItem="s8f-iO-4tj" secondAttribute="bottom" constant="8" id="FdB-mo-oBG"/>
+                            <constraint firstAttribute="trailing" secondItem="pO2-h0-FnU" secondAttribute="trailing" constant="8" id="G2n-oT-2Xe"/>
+                            <constraint firstItem="pO2-h0-FnU" firstAttribute="top" secondItem="ng0-7b-f02" secondAttribute="bottom" constant="8" id="HZr-5r-hsg"/>
+                            <constraint firstItem="ng0-7b-f02" firstAttribute="width" secondItem="oGb-rA-ScJ" secondAttribute="width" id="JI2-UF-LXA"/>
+                            <constraint firstItem="W2b-m3-GBo" firstAttribute="leading" secondItem="oGb-rA-ScJ" secondAttribute="trailing" constant="8" id="K6A-Km-27N"/>
+                            <constraint firstItem="W2b-m3-GBo" firstAttribute="height" secondItem="oGb-rA-ScJ" secondAttribute="height" id="K8O-hS-i5h"/>
+                            <constraint firstItem="pO2-h0-FnU" firstAttribute="leading" secondItem="goA-2t-9RM" secondAttribute="trailing" constant="8" id="Lvq-mj-pw5"/>
+                            <constraint firstItem="IfJ-dN-ehx" firstAttribute="top" secondItem="oGb-rA-ScJ" secondAttribute="bottom" constant="8" id="MSw-Ze-PZe"/>
+                            <constraint firstItem="ng0-7b-f02" firstAttribute="leading" secondItem="IfJ-dN-ehx" secondAttribute="trailing" constant="8" id="UGh-0c-7tw"/>
+                            <constraint firstItem="tp2-z6-uih" firstAttribute="top" secondItem="pO2-h0-FnU" secondAttribute="bottom" constant="8" id="Yem-YS-Kyw"/>
+                            <constraint firstItem="oGb-rA-ScJ" firstAttribute="leading" secondItem="h7r-tv-WYx" secondAttribute="leading" constant="8" id="aCd-t6-oCc"/>
+                            <constraint firstItem="pO2-h0-FnU" firstAttribute="width" secondItem="oGb-rA-ScJ" secondAttribute="width" id="ar3-nE-ROz"/>
+                            <constraint firstItem="goA-2t-9RM" firstAttribute="top" secondItem="IfJ-dN-ehx" secondAttribute="bottom" constant="8" id="ccr-G1-zb0"/>
+                            <constraint firstAttribute="trailing" secondItem="ng0-7b-f02" secondAttribute="trailing" constant="8" id="cgm-tx-TaD"/>
+                            <constraint firstItem="W2b-m3-GBo" firstAttribute="width" secondItem="oGb-rA-ScJ" secondAttribute="width" id="ffR-1E-OW9"/>
+                            <constraint firstItem="IfJ-dN-ehx" firstAttribute="width" secondItem="oGb-rA-ScJ" secondAttribute="width" id="kP0-Qb-VAL"/>
+                            <constraint firstItem="goA-2t-9RM" firstAttribute="leading" secondItem="h7r-tv-WYx" secondAttribute="leading" constant="8" id="l19-LY-Zj2"/>
+                            <constraint firstItem="W2b-m3-GBo" firstAttribute="top" secondItem="s8f-iO-4tj" secondAttribute="bottom" constant="8" id="neU-Wc-SFI"/>
+                            <constraint firstItem="tp2-z6-uih" firstAttribute="top" secondItem="goA-2t-9RM" secondAttribute="bottom" constant="8" id="nyN-fb-0Mt"/>
+                            <constraint firstAttribute="trailing" secondItem="W2b-m3-GBo" secondAttribute="trailing" constant="8" id="pLK-LT-3gb"/>
+                            <constraint firstItem="ng0-7b-f02" firstAttribute="height" secondItem="oGb-rA-ScJ" secondAttribute="height" id="qFv-DA-Nrl"/>
+                            <constraint firstItem="IfJ-dN-ehx" firstAttribute="leading" secondItem="h7r-tv-WYx" secondAttribute="leading" constant="8" id="vQ5-zp-8cZ"/>
+                            <constraint firstItem="ng0-7b-f02" firstAttribute="top" secondItem="W2b-m3-GBo" secondAttribute="bottom" constant="8" id="x0K-gU-exR"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="card1" destination="oGb-rA-ScJ" id="k9A-fB-1wh"/>
+                        <outlet property="card2" destination="W2b-m3-GBo" id="Gez-h0-Ecg"/>
+                        <outlet property="card3" destination="IfJ-dN-ehx" id="nHc-b9-CLo"/>
+                        <outlet property="card4" destination="ng0-7b-f02" id="euT-CM-zv6"/>
+                        <outlet property="card5" destination="goA-2t-9RM" id="KZ5-Kf-FVa"/>
+                        <outlet property="card6" destination="pO2-h0-FnU" id="wON-49-oSl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Oh-Lg-Cvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1061.5" y="449.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="Overlay" width="375" height="219"/>
+        <image name="ace_of_clubs" width="222" height="323"/>
+        <image name="back" width="192" height="266"/>
         <image name="bg" width="375" height="667"/>
         <image name="button-play" width="85" height="93"/>
         <image name="button-play1" width="85" height="93"/>
         <image name="button-record" width="93" height="93"/>
         <image name="button-record1" width="93" height="93"/>
+        <image name="front" width="192" height="266"/>
         <image name="penguin_01" width="258" height="359"/>
     </resources>
 </document>
