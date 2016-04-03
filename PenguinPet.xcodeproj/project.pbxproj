@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D589DACB1CAA6C38009EAD96 /* AudioStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D589DACA1CAA6C38009EAD96 /* AudioStatus.swift */; };
 		D5B30C171CABFC5700F881AA /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B30C161CABFC5700F881AA /* CardViewController.swift */; };
+		D5B30C191CB0F5B400F881AA /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B30C181CB0F5B400F881AA /* OptionsViewController.swift */; };
+		D5B30C1B1CB0F79A00F881AA /* MeterTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B30C1A1CB0F79A00F881AA /* MeterTable.swift */; };
 		F51D31C61C46C703000383C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51D31C51C46C703000383C7 /* AppDelegate.swift */; };
 		F51D31C81C46C703000383C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51D31C71C46C703000383C7 /* ViewController.swift */; };
 		F51D31CB1C46C703000383C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F51D31C91C46C703000383C7 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* Begin PBXFileReference section */
 		D589DACA1CAA6C38009EAD96 /* AudioStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioStatus.swift; sourceTree = "<group>"; };
 		D5B30C161CABFC5700F881AA /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		D5B30C181CB0F5B400F881AA /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		D5B30C1A1CB0F79A00F881AA /* MeterTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeterTable.swift; sourceTree = "<group>"; };
 		F51D31C21C46C703000383C7 /* PenguinPet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenguinPet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51D31C51C46C703000383C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F51D31C71C46C703000383C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 			children = (
 				F51D31C51C46C703000383C7 /* AppDelegate.swift */,
 				F51D31C71C46C703000383C7 /* ViewController.swift */,
+				D5B30C181CB0F5B400F881AA /* OptionsViewController.swift */,
+				D5B30C1A1CB0F79A00F881AA /* MeterTable.swift */,
 				F5B9CCA51C4704360070799B /* Utils.swift */,
 				D589DACA1CAA6C38009EAD96 /* AudioStatus.swift */,
 				D5B30C161CABFC5700F881AA /* CardViewController.swift */,
@@ -144,9 +150,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B30C1B1CB0F79A00F881AA /* MeterTable.swift in Sources */,
 				F51D31C81C46C703000383C7 /* ViewController.swift in Sources */,
 				F51D31C61C46C703000383C7 /* AppDelegate.swift in Sources */,
 				D589DACB1CAA6C38009EAD96 /* AudioStatus.swift in Sources */,
+				D5B30C191CB0F5B400F881AA /* OptionsViewController.swift in Sources */,
 				D5B30C171CABFC5700F881AA /* CardViewController.swift in Sources */,
 				F5B9CCA61C4704360070799B /* Utils.swift in Sources */,
 			);

@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-    
+    let meterTable = MeterTable(tableSize: 100)
     //MARK: State Variables
     var audioStatus = AudioStatus.Stopped{
         //State Machine with swift enums and property observers
@@ -87,6 +87,7 @@ class ViewController: UIViewController {
         updateTimer = nil
         // Update UI
         timeLabel.text = formatTime(0)
+        animateMouth(1)
     }
     
     func updateLoop() {
@@ -97,6 +98,7 @@ class ViewController: UIViewController {
             formatTime(audioRecorder.currentTime)
         
         timeLabel.text =  text
+        animateMouth(meterLevelesToFrame())
     }
 }
 
@@ -146,6 +148,12 @@ extension ViewController: AVAudioPlayerDelegate, AVAudioRecorderDelegate {
             do{
                 try audioPlayer = AVAudioPlayer(contentsOfURL: currentFileUrl)
                 audioPlayer.delegate = self
+                audioPlayer.meteringEnabled = true
+                audioPlayer?.enableRate = true
+                setVolume(NSUserDefaults.standardUserDefaults().floatForKey("Volume"))
+                setPan(NSUserDefaults.standardUserDefaults().floatForKey("Pan"))
+                setLoopPlayback(NSUserDefaults.standardUserDefaults().boolForKey("Loop Audio"))
+                setRate(NSUserDefaults.standardUserDefaults().floatForKey("Rate"))
                 if audioPlayer.duration > 0.0 {
                     changeImage(forButton: playButton, withImage: "button-play1")
                     audioStatus = .Playing
@@ -271,6 +279,55 @@ extension ViewController{
      */
 }
 
+
+extension ViewController{
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "optionsSeque" {
+            let optionsVC = segue.destinationViewController as! OptionsViewController
+            optionsVC.vc = self
+        }
+    }
+    
+    func setVolume(value: Float) {
+        audioPlayer?.volume = value //0 - 1
+    }
+    
+    //Panning audio lets you distribute sound across the stereo channels
+    func setPan(value: Float) {
+        audioPlayer?.pan = value//left-1 - +1 //right
+        //zero = center
+    }
+    //change the playBack rate
+    func setRate(value: Float) {
+        audioPlayer?.rate = value
+    }
+    
+    func setLoopPlayback(loop: Bool) {
+        audioPlayer.numberOfLoops = loop ? -1 : 0
+        //negative value - infinite num of repeats
+        //1 - repeat once. 0 - don't repeat
+    }
+    func meterLevelesToFrame()-> Int{
+        audioPlayer?.updateMeters()
+        let avgPower = audioPlayer?.averagePowerForChannel(0)
+        var pow = audioPlayer?.peakPowerForChannel(0)
+      
+        let linearValue = meterTable.valueForPower(avgPower ?? -0)
+        print(linearValue)
+        //Convert to percentage
+        //let pct = Int(round(linearValue * 100))
+        let frame =  min(4, Int(round(60 * linearValue))) // 0 - 4
+        print(frame)
+        return frame + 1 // 1-5
+    }
+    
+    func animateMouth(frame:Int){
+        let frameName = "penguin_0\(frame)"
+        let frameImage = UIImage(named: frameName)
+        penguin.image = frameImage
+    }
+}
 
 
 

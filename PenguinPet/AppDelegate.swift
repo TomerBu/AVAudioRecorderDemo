@@ -30,9 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         session.requestRecordPermission { (granted:Bool) in
             appHasMicAccess = granted
         }
-        
+        registerDefaults()
         return true
     }
+    
+    func registerDefaults() {
+        var factorySettings = [String: AnyObject]()
+        factorySettings["Loop Audio"] = false
+        factorySettings["Volume"] = 0.5
+        factorySettings["Pan"] = 0.0
+        factorySettings["Rate"] = 1.0
+        
+        NSUserDefaults.standardUserDefaults().registerDefaults(factorySettings)
+    }
+
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -58,7 +58,7 @@ class CardViewController: UIViewController {
         super.viewDidAppear(animated)
         let buttons = [card1, card2, card3, card4, card5, card6]
         for (idx, btn) in buttons.enumerate(){
-            btn.setBackgroundImage(chosenCards[idx], forState: UIControlState.Highlighted)
+            btn.setBackgroundImage(chosenCards[idx], forState: UIControlState.Highlighted.union(.Selected))
         }
     }
     
